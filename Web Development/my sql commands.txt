@@ -1,0 +1,196 @@
+ Database - a database is an application that stores the organised collection of
+           records . it can be accessed by user very easily . It allow us to 
+           organise data into tables , rows and columns to find out data very 
+           easily .
+
+Today there are so many databases Mysql , sybase , oracle , monogodb , postgreSQL .
+
+Commands
+show databases;   -> to check database .
+create database database_name;   -> to create a database .
+use database_name;   -> to use the database .
+show tables;   -> to show the tables .
+
+MYSQL -> it is currently most poular database management system / software used for
+         managing database .
+
+Create Tables
+
+Command -> create table employee (id int , name varchar(50) , age int(2));
+
+-> create table person (personid int , name varchar(50) , lastname varchar(50) ,
+   address varchar(100) , city varchar(20));
+
+Desc ID -> desc command is used to check the structure of the table .
+
+===============================================================================================-------------
+ 
+In a table the first column should be a primary key (unique key) .
+
+
+Insert command -> to insert some items into the tables .
+Command -> insert into table_name(column1 , column2 , column3 ,) values(value1 , 
+value2 , value3);
+
+Select command -> select * from customer; -> it will show the entire table .
+               -> select column_name from table_name; -> it will only show the name and data feed into the column .
+               -> select column_name , column_name table_name; -> it will only show 2 columns .
+
+Delete comman -> drop table table_name; -> it will delete the table .
+
+---------------------------------------------------------------------------------
+
+Where clause - where clause is used to filter records .
+
+command - select column1 , column2 from table_name where condition;
+
+select * from person where personid = 1;
+select name from the person where personid = 5;
+select name , lastname from person where name = 'a';
+select name from person where personid > 1;
+
+----------------------------------------------------------------------------------
+
+syntax - UPDATE table_name
+Set column1 = value1 , column2 = value2 , -----
+Where condition;
+
+Update person set name = 'abiel' , lastname = 'benny' , address = 'tiri' where person id = 2;
+
+----------------------------------------------------------------------------------
+
+The MIN() function returns the smallest value of the selected column .
+
+SELECT MIN(column_name)FROM table_name WHERE condition ;
+
+The MAX() function returns the largest value of the selected column .
+
+SELECT MAX(Column_name) FROM table_name WHERE condition ;
+
+----------------------------------------------------------------------------------
+
+The COUNT() function returns the number of rows that matches a specified criterion .
+
+SELECT COUNT(column_name) FROM table_name WHERE condition ; 
+
+----------------------------------------------------------------------------------
+
+The AVG() function returns the average value of a numeric column .
+
+SELECT AVG(column_name) FROM table_name WHERE condition ;
+
+---------------------------------------------------------------------------------
+
+The sum function is used to return the sum of a numeric column .
+
+SELECT sum(Price) FROM table_name ;
+
+----------------------------------------------------------------------------------
+
+select top claws is used on large tables with thousands of records .
+
+Distinct keyword is used to select distinct values(Different value) .
+
+SELECT distinct column1 , column2 from table_name ;
+
+----------------------------------------------------------------------------------
+
+Order by keyword sorts the records in ascending order by default .
+
+To sort the record in descending order - use desc keyword .
+
+SELECT column1 , column2 from table_name order by column1 , column2 ASC or DESC ;
+
+------------------------------------------------------------------------------------
+select top claws is used where there are 1000 of records .
+
+select column_name from table_name where condition limit number ;
+
+----------------------------------------------------------------------------------
+
+The DELETE statement is used to delete existing records in a table;
+
+DELETE FROM table_name WHERE condition;
+
+------------------------------------------------------------------------------------
+
+The LIKE operator is used in a WHERE clause to Search for a specified pattern
+in a column .
+
+Pattern like name start with a , end with d .
+
+A wildcard character is used to substitute one or more characters in a string .
+
+There are two wildcards often used in conjuction with the LIKE operator .
+
+=> The underscore sign (_) represents one , single character .
+=> The percent sign (%) represents zero , one or multiple characters .
+=> * Represents zero or more characters bl* finds bl , black , blue and blob .
+
+SELECT column1 , column2 , ...
+FROM table_name
+WHERE column LIKE pattern;
+
+Example 1 -
+SELECT ProductName FROM product WHERE ProductName LIKE 'C%';
+
+Example 2 -
+SELECT ProductName FROM product WHERE ProductName LIKE '%s';
+
+Example 3 -
+SELECT ProductName FROM product WHERE ProductName LIKE '%i%';
+
+Example 4 -
+SELECT ProductName FROM product WHERE ProductName LIKE '__e%';
+
+Example 5 -
+SELECT ProductName FROM product WHERE ProductName LIKE '_h%';
+
+Example 6 -
+SELECT ProductName FROM product WHERE ProductName LIKE 'C_____%';
+
+-----------------------------------------------------------------------------------
+
+The IN operator allows you to specify multiple values in a WHERE clause .
+
+SELECT column_name(s) FROM table_name WHERE column_name IN(value , value2 , ...);
+
+-----------------------------------------------------------------------------------
+
+The BETWEEN operator selects values within a given range. The values can be numbers
+, text or dates .
+
+SELECT column_name(s) FROM table_name WHERE column_name BETWEEN value1 AND value2 ;
+
+----------------------------------------------------------------------------------
+
+Alias are used to give a table or a column in a table a temporary name .
+An alias only exists for yhe duration of that query .
+An alias is created with the AS keyword .
+
+SELECT column_name AS alias_name FROM table_name ;
+
+Example - SELECT * FROM product WHERE Price BETWEEN 18 AND 25 AND ProduId NOT IN (2 , 3);
+Example - SELECT * FROM product WHERE ProductName BETWEEN 'Aniseed Syrup' AND 'Chais' order by Price DESC ;
+
+---------------------------------------------------------------------------------
+
+A field with a NULL value is a field with no value .
+
+---------------------------------------------------------------------------------
+
+A JOIN clause is used to combine rows from two or more tables , based on a 
+related column between them .
+
+Tables -> ID , Customers
+
+Syntax -> select id.orderid , id.customerid , customer.id , customer.name from id id INNER JOIN customer id.customer id=customer.customerid ;
+
+Inner Join -> Inner join keyword select records that have matching values in both tables .
+
+INNER JOIN THREE TABLES -> Select employee.EmployeeID , employee.CustomerID , customer.ContactName , product.ProductName FROM ((employee INNER JOIN 
+customer on employee.CustomerID = customer.CustomerID)INNER JOIN product on employee.ShipperID = product.ProduId);
+
+Left Join -> The Left Join keyword returns all recordes from the left table (table1) 
+, and the matching recordes from the right table (table2). The result is 0 records 
+from the right side , if there is no match . 
